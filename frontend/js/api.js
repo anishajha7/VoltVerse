@@ -3,7 +3,7 @@
 // after deployment we can add url
 
 
-const BASE = 'http://localhost:5000/api';
+const BASE = 'https://voltverse.onrender.com/api';
 
 async function apiCall(path, method = 'GET', body = null) {
   try {

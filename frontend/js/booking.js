@@ -84,7 +84,7 @@ function showSummary() {
 
 async function confirmBooking() {
   const user = getCurrentUser();
-  if (!user) { alert('Pehle login karo!'); return; }
+  if (!user) { alert('Please login first!'); return; }
 
   const res = await createBooking({
     user_id: user.id,
