@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book a Slot — VoltVerse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles/main.css"/>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="logo"><span class="logo-dot"></span><span class="logo-text">Volt<span class="logo-accent">Verse</span></span></a>
+    <div class="nav-center">
+      <a href="index.html" class="ni">Home</a>
+      <a href="booking.html" class="ni on">Book Slot</a>
+      <a href="dashboard.html" class="ni">My Bookings</a>
+    </div>
+    <div class="nav-right">
+      <span id="nav-user" class="nav-user"></span>
+      <button class="btn-si" onclick="logout()">Sign Out</button>
+    </div>
+  </nav>
+ 
+  <div class="page-hero">
+    <div class="container">
+      <h2 class="page-title">Book a Charging Slot</h2>
+      <p>Select your station, date and preferred time slot below</p>
+    </div>
+  </div>
+ 
+  <div class="container">
+    <div class="booking-form-card">
+      <div class="form-steps-bar">
+        <div class="form-step active" id="fstep-1"><span class="fstep-num">1</span> Station</div>
+        <div class="fstep-line"></div>
+        <div class="form-step" id="fstep-2"><span class="fstep-num">2</span> Date</div>
+        <div class="fstep-line"></div>
+        <div class="form-step" id="fstep-3"><span class="fstep-num">3</span> Time Slot</div>
+        <div class="fstep-line"></div>
+        <div class="form-step" id="fstep-4"><span class="fstep-num">4</span> Confirm</div>
+      </div>
+      <div class="form-section">
+        <label class="form-label">Select Charging Station</label>
+        <select id="station-select" onchange="onStationChange()">
+          <option value="">— Choose a station near you —</option>
+        </select>
+        <div id="station-info" class="station-info" style="display:none"></div>
+      </div>
+      <div class="form-section">
+        <label class="form-label">Select Date</label>
+        <input type="date" id="date-input" onchange="loadSlots()"/>
+      </div>
+      <div class="form-section">
+        <label class="form-label">Select Available Time Slot</label>
+        <div id="slots-container"><p class="hint-text">Please select a station and date to see available slots</p></div>
+      </div>
+      <div class="form-section">
+        <label class="form-label">Vehicle Registration Number <span style="font-weight:400;color:#94a3b8">(optional)</span></label>
+        <input type="text" id="vehicle-input" placeholder="e.g. DL 01 AB 1234" style="text-transform:uppercase"/>
+      </div>
+      <div id="booking-summary" class="booking-summary" style="display:none">
+        <h4>Booking Summary</h4>
+        <div id="summary-content"></div>
+        <button class="btn-primary btn-confirm" onclick="confirmBooking()">Confirm Booking →</button>
+      </div>
+    </div>
+  </div>
+ 
+  <footer style="margin-top:3rem">
+    <div class="footer-btm" style="border:none;padding-top:0">© 2026 VoltVerse</div>
+  </footer>
+ 
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/booking.js"></script>
+  <script>
+    updateNavUser();
+    document.getElementById('date-input').min = new Date().toISOString().split('T')[0];
+    loadStations();
+  </script>
+</body>
+</html>
+ 

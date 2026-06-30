@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Bookings — VoltVerse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles/main.css"/>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <span class="logo-dot"></span>
+      <span class="logo-text">Volt<span class="logo-accent">Verse</span></span>
+    </a>
+    <div class="nav-center">
+      <a href="index.html" class="ni">Home</a>
+      <a href="booking.html" class="ni">Book Slot</a>
+      <a href="dashboard.html" class="ni on">My Bookings</a>
+    </div>
+    <div class="nav-right">
+      <span id="nav-user" class="nav-user"></span>
+      <button class="btn-si" onclick="logout()">Sign Out</button>
+    </div>
+  </nav>
+ 
+  <div class="page-hero">
+    <div class="container">
+      <div class="dashboard-header">
+        <div>
+          <h2 class="page-title">My Bookings</h2>
+          <p>All your charging slot reservations</p>
+        </div>
+        <a href="booking.html" class="btn-primary" style="margin-top:0.5rem">+ New Booking</a>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="container">
+    <div id="bookings-container">
+      <p class="hint-text">Loading your bookings...</p>
+    </div>
+  </div>
+ 
+  <footer style="margin-top:3rem">
+    <div class="footer-btm" style="border:none;padding-top:0">© 2026 VoltVerse</div>
+  </footer>
+ 
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    updateNavUser();
+ 
+    async function loadDashboard() {
+      const user = getCurrentUser();
+      if (!user) {
+        document.getElementById('bookings-container').innerHTML =
+          '<p class="hint-text">Please <a href="index.html" style="color:#10B981;font-weight:600">sign in</a> to see your bookings.</p>';
+        return;
+      }
+ 
+      const bookings = await getUserBookings(user.id);
+      const container = document.getElementById('bookings-container');
+ 
+      if (!bookings.length) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <p>No bookings yet.</p>
+            <a href="booking.html" class="btn-primary">Book your first slot</a>
+          </div>`;
+        return;
+      }
+ 
+      container.innerHTML = bookings.map((b, i) => `
+        <div class="booking-card ${b.status}" style="animation-delay:${i * 60}ms">
+          <div class="booking-card-header">
+            <div>
+              <h3>${b.station_name}</h3>
+              <p class="booking-location">&#128205; ${b.location}</p>
+            </div>
+            <span class="status-badge status-${b.status}">${b.status.toUpperCase()}</span>
+          </div>
+          <div class="booking-details">
+            <span>&#128197; ${b.date}</span>
+            <span>&#128336; ${b.time}</span>
+            <span>&#9200; ${b.duration_mins} mins</span>
+            <span>&#8377; ${b.total_price}</span>
+            ${b.vehicle_number ? `<span>&#128663; ${b.vehicle_number}</span>` : ''}
+          </div>
+          ${b.status === 'confirmed'
+            ? `<button class="btn-cancel" onclick="cancelMyBooking(${b.id}, this)">Cancel Booking</button>`
+            : ''}
+        </div>
+      `).join('');
+    }
+ 
+    async function cancelMyBooking(id, btn) {
+      if (!confirm('Are you sure you want to cancel this booking?')) return;
+      btn.textContent = 'Cancelling...';
+      btn.disabled = true;
+      const res = await cancelBooking(id);
+      if (res.message) {
+        alert('Booking cancelled successfully.');
+        loadDashboard();
+      } else {
+        btn.textContent = 'Cancel Booking';
+        btn.disabled = false;
+      }
+    }
+ 
+    loadDashboard();
+  </script>
+</body>
+</html>
+ 

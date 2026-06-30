@@ -1,0 +1,3 @@
+cd D:\Downloads\ev-charging-booking\ev-charging-booking\backend
+venv\Scripts\Activate.ps1
+python app.py

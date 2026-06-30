@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VoltVerse — Smart EV Charging for Delhi NCR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles/main.css"/>
+</head>
+<body>
+ 
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <span class="logo-dot"></span>
+      <span class="logo-text">Volt<span class="logo-accent">Verse</span></span>
+    </a>
+    <div class="nav-center">
+      <a href="index.html" class="ni on">Home</a>
+      <a href="booking.html" class="ni">Book Slot</a>
+      <a href="dashboard.html" class="ni">My Bookings</a>
+    </div>
+    <div class="nav-right">
+      <span id="nav-user" class="nav-user"></span>
+      <button id="auth-btn" class="btn-si" onclick="toggleAuthModal()">Sign In</button>
+      <button id="signup-btn" class="btn-su" onclick="toggleAuthModal()">Sign Up</button>
+    </div>
+  </nav>
+ 
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-badge"><span class="bp"></span>Delhi NCR's Smart EV Network</div>
+      <h1>Charge Smarter,<br><span class="green">Drive Further</span></h1>
+      <p class="hero-sub">Real-time slot availability. Instant confirmation. Zero waiting across 12+ stations in Delhi NCR.</p>
+      <div class="hero-btns">
+        <a href="booking.html" class="btn-primary">⚡ Book a Slot</a>
+        <a href="#how" class="btn-outline-hero">How it works →</a>
+      </div>
+      <div class="stats-row">
+        <div class="stat">
+          <div class="stat-num">12<span class="g">+</span></div>
+          <div class="stat-label">Stations</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">AC<span class="g">+</span>DC</div>
+          <div class="stat-label">Chargers</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">₹<span class="g">35</span></div>
+          <div class="stat-label">Starting /hr</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img
+        src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=900&q=85"
+        alt="Electric vehicle charging"
+        class="hero-img"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <div class="hero-overlay"></div>
+    </div>
+  </section>
+ 
+  <!-- STRIP -->
+  <div class="strip">
+    <div class="strip-item">
+      <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      <span>Instant Confirmation</span> — real-time booking
+    </div>
+    <div class="strip-item">
+      <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      <span>No Hidden Fees</span> — transparent pricing
+    </div>
+    <div class="strip-item">
+      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span>Verified Locations</span> — trusted stations
+    </div>
+  </div>
+ 
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="sec-label">Why VoltVerse</div>
+    <div class="sec-title">Everything you need to charge smarter</div>
+    <div class="feat-grid">
+      <div class="feat-card" data-i="0">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3>AC &amp; DC Charging</h3>
+        <p>All major EV models supported across every station</p>
+      </div>
+      <div class="feat-card" data-i="1">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <h3>Advance Booking</h3>
+        <p>Reserve your slot days ahead, skip queues entirely</p>
+      </div>
+      <div class="feat-card" data-i="2">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3>Transparent Pricing</h3>
+        <p>See exact cost before confirming — no surprises</p>
+      </div>
+      <div class="feat-card" data-i="3">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M9 6V4h6v2"/></svg></div>
+        <h3>Easy Cancellation</h3>
+        <p>Cancel any booking instantly from your dashboard</p>
+      </div>
+      <div class="feat-card" data-i="4">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3>12+ NCR Locations</h3>
+        <p>Dwarka, CP, Saket, Gurugram, Noida &amp; more</p>
+      </div>
+      <div class="feat-card" data-i="5">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Secure &amp; Reliable</h3>
+        <p>Encrypted accounts, guaranteed slot protection</p>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="sec-label">How it works</div>
+    <div class="how-h2">Book your slot in 4 easy steps</div>
+    <div class="steps">
+      <div class="step"><div class="step-n">1</div><h4>Sign Up</h4><p>Create account in seconds</p></div>
+      <div class="step-arr">→</div>
+      <div class="step"><div class="step-n">2</div><h4>Pick Station</h4><p>Browse 12+ NCR stations</p></div>
+      <div class="step-arr">→</div>
+      <div class="step"><div class="step-n">3</div><h4>Select Slot</h4><p>Real-time availability</p></div>
+      <div class="step-arr">→</div>
+      <div class="step"><div class="step-n">4</div><h4>Confirm &amp; Go</h4><p>Just show up and charge</p></div>
+    </div>
+    <a href="booking.html" class="btn-how">Get Started →</a>
+  </section>
+ 
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="f-logo"><span class="logo-dot" style="background:#10B981"></span><span class="fvolt">Volt</span><span class="fverse">Verse</span></div>
+        <p>Making EV charging simple across Delhi NCR. Book your slot in seconds, charge without stress.</p>
+      </div>
+      <div class="f-col">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="booking.html">Book a Slot</a>
+        <a href="dashboard.html">My Bookings</a>
+      </div>
+      <div class="f-col">
+        <h4>Contact</h4>
+        <a href="#">Delhi NCR, India</a>
+        <a href="#">support@voltverse.in</a>
+      </div>
+    </div>
+    <div class="footer-btm">© 2026 VoltVerse</div>
+  </footer>
+ 
+  <!-- AUTH MODAL -->
+  <div id="auth-modal" class="modal">
+    <div class="modal-box">
+      <div class="m-logo"><span class="volt">Volt</span><span class="verse">Verse</span></div>
+      <div class="m-tabs">
+        <button class="m-tab on" onclick="switchTab('signin')">Sign In</button>
+        <button class="m-tab" onclick="switchTab('signup')">Sign Up</button>
+      </div>
+      <div id="signin-form">
+        <input class="m-input" type="email" id="login-email" placeholder="Email address"/>
+        <input class="m-input" type="password" id="login-pass" placeholder="Password"/>
+        <button class="btn-submit" onclick="login()">Sign In</button>
+        <p id="login-error" class="error-msg"></p>
+        <div class="m-switch">Don't have an account? <a onclick="switchTab('signup')">Sign Up</a></div>
+      </div>
+      <div id="signup-form" style="display:none">
+        <input class="m-input" type="text" id="reg-name" placeholder="Full Name"/>
+        <input class="m-input" type="email" id="reg-email" placeholder="Email address"/>
+        <input class="m-input" type="text" id="reg-phone" placeholder="Phone number (optional)"/>
+        <input class="m-input" type="password" id="reg-pass" placeholder="Password"/>
+        <button class="btn-submit" onclick="register()">Create Account</button>
+        <p id="reg-error" class="error-msg"></p>
+        <div class="m-switch">Already have an account? <a onclick="switchTab('signin')">Sign In</a></div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+  </div>
+ 
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    updateNavUser();
+ 
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), entry.target.dataset.i * 80);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.feat-card').forEach(el => observer.observe(el));
+ 
+    function toggleAuthModal() {
+      const user = getCurrentUser();
+      if (user) { logout(); return; }
+      document.getElementById('auth-modal').classList.add('show');
+    }
+    function closeModal() {
+      document.getElementById('auth-modal').classList.remove('show');
+    }
+    function switchTab(tab) {
+      document.getElementById('signin-form').style.display = tab === 'signin' ? 'block' : 'none';
+      document.getElementById('signup-form').style.display = tab === 'signup' ? 'block' : 'none';
+      document.querySelectorAll('.m-tab').forEach((t, i) => {
+        t.classList.toggle('on', (i === 0 && tab === 'signin') || (i === 1 && tab === 'signup'));
+      });
+    }
+    async function login() {
+      const res = await loginUser(
+        document.getElementById('login-email').value,
+        document.getElementById('login-pass').value
+      );
+      if (res.user) { localStorage.setItem('ev_user', JSON.stringify(res.user)); closeModal(); updateNavUser(); }
+      else document.getElementById('login-error').textContent = res.error;
+    }
+    async function register() {
+      const res = await registerUser({
+        name: document.getElementById('reg-name').value,
+        email: document.getElementById('reg-email').value,
+        phone: document.getElementById('reg-phone').value,
+        password: document.getElementById('reg-pass').value
+      });
+      if (res.user) { localStorage.setItem('ev_user', JSON.stringify(res.user)); closeModal(); updateNavUser(); }
+      else document.getElementById('reg-error').textContent = res.error;
+    }
+  </script>
+</body>
+</html>
